@@ -1,0 +1,15 @@
+---
+- name: melcma.git Make folder for git repositories in /var/www
+  become: true
+  file:
+    path: /var/www
+    state: directory
+    owner: "{{ ansible_ssh_user }}"
+
+- name: melcma.git Clone git applications in /var/www
+  git:
+    repo: "{{ item.value.repository }}"
+    dest: "/var/www/{{ item.key }}"
+    force: yes
+    accept_hostkey: yes
+  with_dict: "{{ applications }}"

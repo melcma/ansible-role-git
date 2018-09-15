@@ -1,0 +1,6 @@
+---
+- name: melcma.git Install Git
+  become: yes
+  apt:
+    name: git
+    state: present

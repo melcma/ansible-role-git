@@ -1,0 +1,11 @@
+---
+- name: melcma.git Copy git global config file to /etc/gitconfig
+  become: true
+  copy:
+    src: files/gitconfig
+    dest: /etc/gitconfig
+
+- name: melcma.git Copy Git user config file to ~/.gitconfig
+  copy:
+    src: files/.gitconfig
+    dest: ~/.gitconfig
